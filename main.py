@@ -22,9 +22,9 @@ creator.grid(row=1)
 # Body to hold the mini-games
 body_frame = LabelFrame(root, pady=0, borderwidth=5)
 body_frame.pack()
-game_1 = Button(body_frame, text="Game 1", font=('Comic Sans MS', 16), borderwidth=0, padx=25, pady=9, command=open_game_1)
+game_1 = Button(body_frame, text="Guess the sign", font=('Comic Sans MS', 16), borderwidth=0, padx=15, pady=9, command=lambda: open_game_1(root))
 game_1.grid(row=0, column=0)
-game_2 = Button(body_frame, text="Game 2", font=('Comic Sans MS', 16), borderwidth=0, padx=25, pady=9, command=open_game_2)
+game_2 = Button(body_frame, text="Guess the word", font=('Comic Sans MS', 16), borderwidth=0, padx=15, pady=9, command=lambda: open_game_2(root))
 game_2.grid(row=0, column=1)
 
 # x1 = Label(root, text='filler', width=10).grid(row=1, column=0)

@@ -50,38 +50,51 @@ word_img = {
 #     b_word.config(text=my_text)
 
 
-def open_game_1():
+def open_game_1(root):
     top = Toplevel()
     top.title("Game 1")
     top.geometry('400x600+600+100')
 
-    exit = Button(top,text="Return",command=top.destroy,padx=20,pady=10)
-    exit.grid(row=0,column=3)
+    rtrn = Button(top,text="Return",command=top.destroy,padx=20,pady=10)
+    rtrn.grid(row=0,column=0)
+    Label(top, text='', width=2).grid(row=0, column=3)
+    exit = Button(top,text="Exit",command=root.destroy,padx=25,pady=10)
+    exit.grid(row=0, column=4)
 
-    global the_word
-    the_word = Label(top,text="BLA BLA BLA")
-    the_word.grid(row=2, column=2)
+    global l_the_word
+    l_the_word = Label(top, text="Your Word")
+    l_the_word.grid(row=4, column=2)
 
-    global the_img
-    the_img = ImageTk.PhotoImage(Image.open("Signs/----.jpg"))
-    l_img = Label(top, image=the_img)
-    l_img.grid(row=1, column=2)
+    global base_img
+    base_img = ImageTk.PhotoImage(Image.open("Signs/base.png"))
+    l_img = Label(top, image=base_img)
+    l_img.grid(row=2, column=2)
+    Label(top, text='', height=3).grid(row=1, column=2)
 
     def word_gen(word_img):
         word_list = list(word_img.keys())
         random_word = random.choice(word_list)
-        global the_word
-        the_word.config(text=random_word)
-        img_gen(random_word)
+        global l_the_word
+        l_the_word.config(text=random_word)
+        l_img.config(image=base_img)
+        l_img.image = base_img
+        # l_img = Label(top, image=base_img)
+        # l_img.grid(row=1, column=2)
+        # img_gen(random_word)
 
-    def img_gen(word):
-        file_name = "Signs/" + word + ".png"
+    def img_gen():
+        our_word = l_the_word['text']
+        file_name = "Signs/" + our_word + ".png"
         new_img = ImageTk.PhotoImage(Image.open(file_name))
         l_img.config(image=new_img)
         l_img.image = new_img
 
+
+
     b_word = Button(top,text="Generate Word",command=lambda: word_gen(word_img))
-    b_word.grid(row=3, column = 2)
+    b_word.grid(row=5, column = 2)
+    b_img = Button(top, text="Show Img", command=lambda: img_gen())
+    b_img.grid(row=3, column=2)
     Label(top, text='', width=13).grid(row=1, column=0, rowspan=3, columnspan=2)
 
 
