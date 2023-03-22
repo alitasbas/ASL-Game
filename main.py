@@ -1,5 +1,6 @@
 from tkinter import *
 from game1 import *
+from game2 import *
 
 global root
 root = Tk()
