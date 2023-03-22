@@ -34,7 +34,7 @@ word_img = {
     "scared": "scared.png",
     "so so": "so so.png",
     "thanks": "thanks.png",
-    "very busy": "very.png",
+    "very busy": "very busy.png",
     "want": "want.png",
     "wrong": "wrong.png",
     "yes": "yes.png",
@@ -97,7 +97,3 @@ def open_game_1(root):
     b_img.grid(row=3, column=2)
     Label(top, text='', width=13).grid(row=1, column=0, rowspan=3, columnspan=2)
 
-
-def open_game_2():
-    top = Toplevel()
-    top.title("Game 2")
