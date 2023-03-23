@@ -8,7 +8,8 @@ Game 2: Show pictures and ask for the word
 maybe correct word counter
 Can also put clips
 the buttons are still so case sensitive
+make so the entry is standardized to lowercase
 
 merge both games into one?
 
-Game 3 (alphabet training): 
+Game 3 (alphabet training): A speed button that changes the frequency of the frams
