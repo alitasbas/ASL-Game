@@ -1,6 +1,7 @@
 from tkinter import *
 from game1 import *
 from game2 import *
+from game3 import *
 
 global root
 root = Tk()
@@ -27,6 +28,8 @@ game_1 = Button(body_frame, text="Guess the sign", font=('Comic Sans MS', 16), b
 game_1.grid(row=0, column=0)
 game_2 = Button(body_frame, text="Guess the word", font=('Comic Sans MS', 16), borderwidth=0, padx=15, pady=9, command=lambda: open_game_2(root))
 game_2.grid(row=0, column=1)
+game_3 = Button(body_frame, text="Letter practice", font=('Comic Sans MS', 16), borderwidth=0, padx=15, pady=9, command=lambda: open_game_3(root))
+game_3.grid(row=1, column=0)
 
 # x1 = Label(root, text='filler', width=10).grid(row=1, column=0)
 # x2 = Label(root, text='filler', width=10).grid(row=1, column=1)

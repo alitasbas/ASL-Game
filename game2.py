@@ -84,7 +84,7 @@ def open_game_2(root):
         l_img.image = base_img
 
     top = Toplevel()
-    top.title("Game 1")
+    top.title("Game 2")
     top.geometry('400x600+600+100')
 
     rtrn = Button(top, text="Return", command=top.destroy, padx=20, pady=10)
