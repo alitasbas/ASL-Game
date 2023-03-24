@@ -73,6 +73,7 @@ def open_game_2(root):
             result = "Well Done"
             l_result.config(text=result, fg="#1a8a2d")
             l_counter.config(text=count)
+            the_word = "asgudguiasdgadssas"
         else:
             e_the_word.delete(0, END)
             # e_the_word.insert(0, "Oops 😣")
