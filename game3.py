@@ -159,12 +159,40 @@ Only the last letter.
 
 def open_game_3(root):
 
+    # Check the if the entry is correct and display a message
+    # Resets "the" word when correct answer is given to avoid user breaking highscores
+    def check(entry, the_word):
+        global count
+        global result
+        entry = entry.title()
+        # answer = e_the_word.get()
+        if entry == the_word:
+            e_the_word.delete(0, END)
+            # e_the_word.insert(0, "Correct")
+            count += 1
+            result = "Well Done"
+            l_result.config(text=result, fg="#1a8a2d")
+            l_counter.config(text=count)
+            global random_word
+            random_word = "fuckyou"
+        else:
+            e_the_word.delete(0, END)
+            # e_the_word.insert(0, "Oops 😣")
+            count = 0
+            result = "Sorry"
+            l_result.config(text=result, fg="#8f0b0b")
+            l_counter.config(text=count)
+        l_img.config(image=base_img)
+        l_img.image = base_img
+
     # Generates a random word from the list and resets the picture
     def word_gen(word_list):
         global random_word
+        global i
         random_word = random.choice(word_list)
         l_img.config(image=base_img)
         l_img.image = base_img
+        i = 0
 
     # Takes in a word. Keeps the index value right. Shows the picture of the letter based on that index.
     def change_image(the_word):
@@ -196,9 +224,30 @@ def open_game_3(root):
     base_img = ImageTk.PhotoImage(Image.open("Signs/base.png"))
     l_img = Label(top, image=base_img)
     l_img.grid(row=2, column=2)
-    Label(top, text='', height=3).grid(row=1, column=2)
+    # Label(top, text='', height=3).grid(row=1, column=2)
 
-    b_letter = Button(top, text="Next Letter", command=lambda: change_image(random_word))
-    b_letter.grid(row=5, column=2)
-    b_word = Button(top, text="New Word", command=lambda: word_gen(five_words))
-    b_word.grid(row=6, column=2)
+    global random_word
+    global count
+    random_word = "aa"
+    result = ""
+    count = 0
+    l_result = Label(top, text=result, pady=10, font=('Comic Sans MS', 26), fg="#8f0b0b")
+    l_result.grid(row=1, column=2)
+
+    global e_the_word
+    e_the_word = Entry(top)
+    e_the_word.insert(0, "Enter the Word")
+    e_the_word.grid(row=4, column=2)
+    # global the_word
+    # the_word = "Check"
+    b_check = Button(top, text="Check", command=lambda: check(e_the_word.get(), random_word))
+    b_check.grid(row=4, column=3)
+
+    f_buttons = Frame(top)
+    f_buttons.grid(row=5, column=2)
+    b_letter = Button(f_buttons, text="Next Letter", command=lambda: change_image(random_word))
+    b_letter.grid(row=0, column=0)
+    b_word = Button(f_buttons, text="New Word", command=lambda: word_gen(five_words))
+    b_word.grid(row=0, column=1)
+    l_counter = Label(top, text=count)
+    l_counter.grid(row=5, column=3)
